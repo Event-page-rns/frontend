@@ -9,10 +9,10 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import ErrorComponent from "./Components/ErrorComponent"
 import RootLayout from "./Pages/RootLayout.jsx"
 
+
 export default function App() {
   return (
     <BrowserRouter>
-
       <Routes>
         <Route path="" element={<RootLayout/>}>
         <Route index path="/" element={<div>
@@ -21,7 +21,7 @@ export default function App() {
           <Footer/>
         </div>}/>
         <Route path="/events" element={<Events/>}/>
-        <Route path="/events/:eventId" element={<EventPage/>}/>
+        <Route path="/events/:eventId" element={<EventPage/>}/> 
         </Route>
         <Route path="*" element={<ErrorComponent/>}/>
         
