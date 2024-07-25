@@ -8,6 +8,8 @@ import EventPage from "./Components/EventPage"
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import ErrorComponent from "./Components/ErrorComponent"
 import RootLayout from "./Pages/RootLayout.jsx"
+import Test from "./Components/Test.jsx"
+import Signup from "./Components/Signup.jsx"
 
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
         </div>}/>
         <Route path="/events" element={<Events/>}/>
         <Route path="/events/:eventId" element={<EventPage/>}/> 
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         </Route>
         <Route path="*" element={<ErrorComponent/>}/>
         

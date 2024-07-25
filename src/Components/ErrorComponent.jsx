@@ -2,6 +2,7 @@ import React from 'react';
 import ErrorImg from '../assets/illustration.svg'
 import { Link } from 'react-router-dom';
 
+
 const ErrorComponent = () => {
   return (
     <section className="bg-white overflow-hidden overscroll-none">

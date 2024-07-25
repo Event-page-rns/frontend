@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <header className='flex items-center justify-between  px-14 py-6 max-sm:px-4 border-b-2  border-black border-opacity-10'>
       
-        <h1 className='text-4xl font-bold font-mono'>Rns Events</h1>
+        <h1 className='text-4xl font-bold font-mono'>Eventus</h1>
         <div className='max-lg:hidden'>
             <ul className='flex justify-center items-center gap-16 text-lg cursor-pointer'>
                 <li><Link to="/">Home</Link></li>
