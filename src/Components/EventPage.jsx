@@ -40,7 +40,7 @@ const EventPage = () => {
   return (
     <section className=''>
       {/* header */}
-      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[40px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
+      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[30px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
         <h1>{currentEvent?.title}</h1>
       </div>
       {/* main */}

@@ -21,7 +21,7 @@ const Events = () => {
 
   return (
     <section className=" flex justify-center items-center mt-20">
-      <div className="w-[95%] gap-10 max-md:w-[95%] max-sm:gap-0 flex justify-center flex-wrap ">
+      <div className="w-[95%] gap-10 max-md:w-[98%] max-sm:gap-0 flex justify-center flex-wrap ">
         {events.map((item, index) => (
           <EventsCard
             key={index}

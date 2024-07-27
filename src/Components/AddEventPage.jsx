@@ -2,6 +2,8 @@ import { useRef, useState, useContext } from "react";
 import { BASE_URL } from "../Contexts/DocumentContext";
 import { DocumentContext } from "../Contexts/DocumentContext";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddEventPage = () => {
   const fileRef = useRef();
@@ -46,6 +48,12 @@ const AddEventPage = () => {
     try {
       console.log(eventData);
       const response = await axios.post(BASE_URL + "/events", eventData);
+      if(response){
+        toast.success(response.data.responseMessage)
+        setTimeout(()=>{
+          window.location.reload()
+        },1000)
+      }
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -54,6 +62,7 @@ const AddEventPage = () => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full h-full px-[10%] py-5 gap-2 max-lg:p-5">
+        <ToastContainer />
       <div className="flex flex-col gap-1 w-full">
         <label>Title</label>
         <input
