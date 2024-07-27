@@ -11,6 +11,7 @@ import RootLayout from "./Pages/RootLayout.jsx";
 import Test from "./Components/Test.jsx";
 import Signup from "./Components/Signup.jsx";
 import AddEventPage from "./Components/AddEventPage.jsx";
+import Chat from "./Components/Chat.jsx";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/addevent" element={<AddEventPage />} />
+          <Route path="/chat" element={<Chat />} />
         </Route>
         <Route path="*" element={<ErrorComponent />} />
       </Routes>
