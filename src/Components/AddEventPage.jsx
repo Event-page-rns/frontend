@@ -50,6 +50,20 @@ const AddEventPage = () => {
     } catch (error) {
       console.error(error);
     }
+    setEventData({
+      title: "",
+      description: "",
+      clubName: "",
+      eventDate: "",
+      eventTime: "",
+      eventVenue: "",
+      entryFee: "",
+      priceMoney: "",
+      base32Url: "",
+      createdBy: "",
+      applyLink: "",
+      whatsAppGroupLink: "",
+    });
   };
 
   return (
@@ -58,6 +72,7 @@ const AddEventPage = () => {
         <label>Title</label>
         <input
           type="text"
+          value={eventData.title}
           placeholder="Type here"
           onChange={handleChange}
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -69,6 +84,7 @@ const AddEventPage = () => {
         <textarea
           className="textarea textarea-primary w-full"
           name="description"
+          value={eventData.description}
           onChange={handleChange}
           rows={5}
           placeholder="Bio"
@@ -79,6 +95,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="clubName"
+          value={eventData.clubName}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full focus:border-blue-600"
@@ -91,6 +108,7 @@ const AddEventPage = () => {
           <input
             type="date"
             name="eventDate"
+            value={eventData.eventDate}
             onChange={handleChange}
             placeholder="Type here"
             className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -101,6 +119,7 @@ const AddEventPage = () => {
           <input
             type="time"
             name="eventTime"
+            value={eventData.eventTime}
             onChange={handleChange}
             placeholder="Type here"
             className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -113,6 +132,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="eventVenue"
+          value={eventData.eventVenue}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -123,6 +143,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="entryFee"
+          value={eventData.entryFee}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -133,6 +154,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="priceMoney"
+          value={eventData.priceMoney}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -144,6 +166,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="applyLink"
+          value={eventData.applyLink}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -154,6 +177,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="whatsAppGroupLink"
+          value={eventData.whatsAppGroupLink}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"

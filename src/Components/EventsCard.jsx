@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ticketImg from "../assets/confirmation_number_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
-import img from "../assets/WhatsApp Image 2024-05-31 at 17.49.28_0bf84ad1.jpg";
 
 const EventsCard = (props) => {
   const navigate = useNavigate();
