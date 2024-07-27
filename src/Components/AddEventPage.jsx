@@ -1,9 +1,7 @@
-import { useRef, useState, useContext, useEffect } from "react";
+import { useRef, useState, useContext } from "react";
 import { BASE_URL } from "../Contexts/DocumentContext";
 import { DocumentContext } from "../Contexts/DocumentContext";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const AddEventPage = () => {
   const fileRef = useRef();
@@ -48,28 +46,33 @@ const AddEventPage = () => {
     try {
       console.log(eventData);
       const response = await axios.post(BASE_URL + "/events", eventData);
-      if (response) {
-        toast.success(response.data.responseMessage);
-      }
       console.log(response);
+      setEventData({
+        title: "",
+        description: "",
+        clubName: "",
+        eventDate: "",
+        eventTime: "",
+        eventVenue: "",
+        entryFee: "",
+        priceMoney: "",
+        base32Url: "",
+        createdBy: "",
+        applyLink: "",
+        whatsAppGroupLink: "",
+      });
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(() => {
-    setEventData((prev) => ({
-      ...prev,
-      createdBy: localStorage.getItem("email"),
-    }));
-  }, []);
 
   return (
     <section className="flex flex-col justify-center items-center w-full h-full px-[10%] py-5 gap-2 max-lg:p-5">
-      <ToastContainer />
       <div className="flex flex-col gap-1 w-full">
         <label>Title</label>
         <input
           type="text"
+          value={eventData.title}
           placeholder="Type here"
           onChange={handleChange}
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -81,6 +84,7 @@ const AddEventPage = () => {
         <textarea
           className="textarea textarea-primary w-full"
           name="description"
+          value={eventData.description}
           onChange={handleChange}
           rows={5}
           placeholder="Bio"
@@ -91,6 +95,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="clubName"
+          value={eventData.clubName}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full focus:border-blue-600"
@@ -103,6 +108,7 @@ const AddEventPage = () => {
           <input
             type="date"
             name="eventDate"
+            value={eventData.eventDate}
             onChange={handleChange}
             placeholder="Type here"
             className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -113,6 +119,7 @@ const AddEventPage = () => {
           <input
             type="time"
             name="eventTime"
+            value={eventData.eventTime}
             onChange={handleChange}
             placeholder="Type here"
             className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -125,6 +132,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="eventVenue"
+          value={eventData.eventVenue}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -135,6 +143,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="entryFee"
+          value={eventData.entryFee}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -145,6 +154,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="priceMoney"
+          value={eventData.priceMoney}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -156,6 +166,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="applyLink"
+          value={eventData.applyLink}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
@@ -166,6 +177,7 @@ const AddEventPage = () => {
         <input
           type="text"
           name="whatsAppGroupLink"
+          value={eventData.whatsAppGroupLink}
           onChange={handleChange}
           placeholder="Type here"
           className="input input-bordered input-primary w-full  focus:border-blue-600"
