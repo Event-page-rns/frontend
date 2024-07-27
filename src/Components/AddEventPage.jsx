@@ -47,23 +47,23 @@ const AddEventPage = () => {
       console.log(eventData);
       const response = await axios.post(BASE_URL + "/events", eventData);
       console.log(response);
+      setEventData({
+        title: "",
+        description: "",
+        clubName: "",
+        eventDate: "",
+        eventTime: "",
+        eventVenue: "",
+        entryFee: "",
+        priceMoney: "",
+        base32Url: "",
+        createdBy: "",
+        applyLink: "",
+        whatsAppGroupLink: "",
+      });
     } catch (error) {
       console.error(error);
     }
-    setEventData({
-      title: "",
-      description: "",
-      clubName: "",
-      eventDate: "",
-      eventTime: "",
-      eventVenue: "",
-      entryFee: "",
-      priceMoney: "",
-      base32Url: "",
-      createdBy: "",
-      applyLink: "",
-      whatsAppGroupLink: "",
-    });
   };
 
   return (
