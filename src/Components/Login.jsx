@@ -1,15 +1,32 @@
 import { DocumentContext } from "../Contexts/DocumentContext";
 import { useContext, React, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../Contexts/DocumentContext";
 const Login = () => {
-  const { login } = useContext(DocumentContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const login = async () => {
+    try {
+      const response = await axios.post(BASE_URL + "/login", {
+        email: email,
+        password: password,
+      });
+      // console.log("response:\n");
+      // console.log(response);
+      localStorage.setItem("email", email);
+      navigate("/");
+    } catch (error) {
+      console.error("Error login: ", error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email + " " + password);
-    login(email, password);
+    login();
   };
 
   return (
