@@ -40,6 +40,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/chat">
+              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
+                Chat
+              </div>
+            </Link>
+          </li>
+          <li>
             <Link to="/login">
               <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
                 Login
@@ -99,6 +106,11 @@ const Navbar = () => {
               <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
                 <Link to="/addevent" onClick={() => setIsMenuOpen(false)}>
                   Add Event
+                </Link>
+              </li>
+              <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
+                <Link to="/chat" onClick={() => setIsMenuOpen(false)}>
+                  Chat
                 </Link>
               </li>
               <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">

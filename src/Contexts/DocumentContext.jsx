@@ -20,25 +20,13 @@ const DocumentContextProvider = ({ children }) => {
       console.error("Error fetching events:", error);
     }
   };
-  const register = async (email, password) => {
-    try {
-      const response = await axios.post(BASE_URL + "/register", {
-        email: email,
-        password: password,
-      });
-      console.log("response:");
-      console.log(response);
-    } catch (error) {
-      console.error("Error fetching events: ", error);
-    }
-  };
 
   useEffect(() => {
     getEvents();
   }, []);
 
   return (
-    <DocumentContext.Provider value={{ getEvents, events, register }}>
+    <DocumentContext.Provider value={{ getEvents, events }}>
       {children}
     </DocumentContext.Provider>
   );

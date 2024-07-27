@@ -1,18 +1,40 @@
 import { DocumentContext } from "../Contexts/DocumentContext";
 import { useContext, React, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../Contexts/DocumentContext";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Signup = () => {
-  const { register } = useContext(DocumentContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const register = async () => {
+    try {
+      const response = await axios.post(BASE_URL + "/register", {
+        email: email,
+        password: password,
+      });
+      console.log("response:");
+      console.log(response);
+      toast.success("Registered successfully.");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error signing in: ", error);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email + " " + password);
-    register(email, password);
+    register();
   };
 
   return (
     <div className="h-[80vh] flex justify-center items-center">
+      <ToastContainer />
       <div className="flex justify-center items-center border-2 border-black rounded-md p-4">
         <div className="max-w-md relative flex flex-col p-4 rounded-md text-black bg-white">
           <div className="text-2xl font-bold mb-2 text-black text-center">
@@ -60,10 +82,7 @@ const Signup = () => {
             </button>
           </form>
           <div className="text-sm text-center mt-[1.6rem]">
-            already have an account yet?{" "}
-            <a className="text-sm text-red-500" href="#">
-              Sign in
-            </a>
+            already have an account? <Link to="/login">Sign in</Link>
           </div>
         </div>
       </div>
