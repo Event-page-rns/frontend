@@ -3,27 +3,32 @@ import closeImg from "../assets/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg
 import openImg from "../assets/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import addImg from "../assets/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg";
 import { HashLink } from "react-router-hash-link";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { DocumentContext } from "../Contexts/DocumentContext";
+import { useContext } from "react";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {isAuth,setIsAuth} = useContext(DocumentContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("email")
+    setIsAuth(false);
+    isMenuOpen(false)
+  }
+
   return (
     <header className="flex items-center justify-between  px-14 py-6 max-sm:px-4 border-b-2  border-black border-opacity-10">
-      <h1 className="text-4xl font-bold font-mono">Eventus</h1>
+      <h1 className="text-4xl font-bold font-mono cursor-pointer" onClick={()=>navigate("/")}>Eventus</h1>
       <div className="max-lg:hidden">
-        <ul className="flex justify-center items-center gap-16 text-lg cursor-pointer">
+        <ul className="flex justify-center items-center gap-16 cursor-pointer text-xl">
           <li>
             <Link to="/">
               <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
                 Home
               </div>
             </Link>
-          </li>
-          <li>
-            <HashLink smooth to="/#Features">
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
-                Features
-              </div>
-            </HashLink>
           </li>
           <li>
             <Link to="/events">
@@ -39,32 +44,34 @@ const Navbar = () => {
               </div>
             </Link>
           </li>
+          { isAuth &&
           <li>
             <Link to="/chat">
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
+              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
                 Chat
               </div>
             </Link>
           </li>
+        }
+          { !isAuth ? 
+
+          <div className="flex gap-x-4 flex-row">
           <li>
             <Link to="/login">
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
+              <div className=" bg-red-500 px-6  text-lg  py-[10px] font-bold text-white">
                 Login
               </div>
             </Link>
           </li>
           <li>
             <Link to="/signup">
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
+              <div className="border-2 border-red-500 px-4 py-2 font-bold">
                 Sign up
               </div>
             </Link>
           </li>
-          <li>
-            <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400">
-              Contact
-            </div>
-          </li>
+          </div> : <button className="bg-red-500 px-4 py-2 text-white" onClick={handleLogout}>Logout</button>
+}
         </ul>
       </div>
       <div className="hidden max-lg:block">
@@ -90,15 +97,6 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
-                <HashLink
-                  smooth
-                  to="/#Features"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Features
-                </HashLink>
-              </li>
-              <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
                 <Link to="/events" onClick={() => setIsMenuOpen(false)}>
                   Events
                 </Link>
@@ -108,29 +106,29 @@ const Navbar = () => {
                   Add Event
                 </Link>
               </li>
-              <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
-                <Link to="/chat" onClick={() => setIsMenuOpen(false)}>
-                  Chat
-                </Link>
-              </li>
-              <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
+              { isAuth &&
+          <li>
+            <Link to="/chat">
+              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
+                Chat
+              </div>
+            </Link>
+          </li>
+        }
+              { !isAuth ? 
+                <>
+              <li className=" bg-red-500 px-6  py-2 text-white">
                 <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                   Login
                 </Link>
               </li>
-              <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
+              <li className="border-2 border-red-500 px-4 py-2">
                 <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
                   Signup
                 </Link>
               </li>
-
-              <li
-                className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {" "}
-                Contact
-              </li>
+              </> : <button className="bg-red-500 px-4 py-2 text-white" onClick={handleLogout}>Logout</button>
+              }
             </ul>
           </div>
         </div>

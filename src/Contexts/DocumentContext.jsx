@@ -7,6 +7,17 @@ export const BASE_URL = "http://localhost:8080/api/v1";
 
 const DocumentContextProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
+  const [isAuth,setIsAuth] = useState(false);
+
+
+  useEffect(()=>{
+    const email = localStorage.getItem("email");
+    if(email){
+      setIsAuth(true);
+    }else{
+      setIsAuth(false);
+    }
+  },[])
 
   const getEvents = async () => {
     try {
@@ -26,7 +37,7 @@ const DocumentContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <DocumentContext.Provider value={{ getEvents, events }}>
+    <DocumentContext.Provider value={{ getEvents, events,isAuth,setIsAuth }}>
       {children}
     </DocumentContext.Provider>
   );

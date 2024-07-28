@@ -11,25 +11,37 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const {setIsAuth} = useContext(DocumentContext);
+
   const login = async () => {
     try {
       const response = await axios.post(BASE_URL + "/login", {
         email: email,
         password: password,
       });
-      // console.log("response:\n");
-      // console.log(response);
+      console.log(response);
       localStorage.setItem("email", email);
-      toast.success("Login successfull");
-      navigate("/");
+      setIsAuth(true)
+      navigate("/")
+
     } catch (error) {
-      console.error("Error login: ", error);
+      toast.error(error.response.data.message)
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email + " " + password);
+
+    if(!email){
+      toast.error("Please Enter Email id");
+      return;
+    }
+
+    if(!password){
+      toast.error("Please Enter Password");
+      return;
+    }
+
     login();
   };
 

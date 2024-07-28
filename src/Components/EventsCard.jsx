@@ -26,7 +26,7 @@ const EventsCard = (props) => {
         </p>
         <p className="flex items-center gap-2">
           <img src={ticketImg} className="brightness-0" />
-          {props.entryFee}
+          {props.entryFee == 0 ? 'FREE' : `${props.entryFee} RS`}
         </p>
         <button
           className="px-4 py-2 bg-red-500 rounded-md text-white w-[150px] text-lg"

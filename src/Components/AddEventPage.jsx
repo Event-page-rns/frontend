@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AddEventPage = () => {
   const fileRef = useRef();
+  const {isAuth} = useContext(DocumentContext);
   const [eventData, setEventData] = useState({
     title: "",
     description: "",
@@ -45,6 +46,11 @@ const AddEventPage = () => {
   };
 
   const handleSubmit = async () => {
+
+    if(!isAuth){
+      toast.error("Please Login to Create event")
+      return;
+    }
     try {
       console.log(eventData);
       const response = await axios.post(BASE_URL + "/events", eventData);

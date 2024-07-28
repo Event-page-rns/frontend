@@ -22,13 +22,22 @@ const Signup = () => {
       toast.success("Registered successfully.");
       navigate("/login");
     } catch (error) {
-      console.error("Error signing in: ", error);
+      toast.error(error.response.data.message)
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email + " " + password);
+    
+    if(!email){
+      toast.error("Please Enter Email id");
+      return;
+    }
+
+    if(!password){
+      toast.error("Please Enter Password");
+      return;
+    }
     register();
   };
 
@@ -82,7 +91,7 @@ const Signup = () => {
             </button>
           </form>
           <div className="text-sm text-center mt-[1.6rem]">
-            already have an account? <Link to="/login">Sign in</Link>
+            already have an account? <Link to="/login" className="text-red-500">Sign in</Link>
           </div>
         </div>
       </div>

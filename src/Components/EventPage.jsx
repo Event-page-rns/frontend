@@ -37,10 +37,11 @@ const EventPage = () => {
 
   // console.log(currentEvent)
 
+
   return (
     <section className=''>
       {/* header */}
-      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[30px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
+      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[20px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
         <h1>{currentEvent?.title}</h1>
       </div>
       {/* main */}
@@ -63,10 +64,10 @@ const EventPage = () => {
           <h1 className='text-2xl'>{currentEvent?.title}</h1>
         </div>
         <div className='hidden max-sm:block'>
-          <p className='text-2xl font-bold font-sans'>FREE</p>
+          <p className='text-2xl font-bold font-sans'>{currentEvent?.entryFee == 0 ? 'FREE' : `${currentEvent?.entryFee} rs`}</p>
         </div>
         <div>
-          <button className='px-4 py-2 bg-red-500 rounded-md text-white w-[150px] h-[50px] text-xl font-bold'>Apply</button>
+          <a href={currentEvent?.applyLink} target='_blank' className='px-6 py-3 bg-red-500 rounded-md text-white w-[180px] h-[70px] text-xl font-bold'>Apply</a>
         </div>
       </div>
     </section>
