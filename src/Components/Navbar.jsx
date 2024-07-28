@@ -9,18 +9,23 @@ import { useContext } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {isAuth,setIsAuth} = useContext(DocumentContext);
+  const { isAuth, setIsAuth } = useContext(DocumentContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("email")
+    localStorage.removeItem("email");
     setIsAuth(false);
-    isMenuOpen(false)
-  }
+    isMenuOpen(false);
+  };
 
   return (
     <header className="flex items-center justify-between  px-14 py-6 max-sm:px-4 border-b-2  border-black border-opacity-10">
-      <h1 className="text-4xl font-bold font-mono cursor-pointer" onClick={()=>navigate("/")}>Eventus</h1>
+      <h1
+        className="text-4xl font-bold font-mono cursor-pointer"
+        onClick={() => navigate("/")}
+      >
+        Eventus
+      </h1>
       <div className="max-lg:hidden">
         <ul className="flex justify-center items-center gap-16 cursor-pointer text-xl">
           <li>
@@ -44,34 +49,40 @@ const Navbar = () => {
               </div>
             </Link>
           </li>
-          { isAuth &&
-          <li>
-            <Link to="/chat">
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
-                Chat
-              </div>
-            </Link>
-          </li>
-        }
-          { !isAuth ? 
-
-          <div className="flex gap-x-4 flex-row">
-          <li>
-            <Link to="/login">
-              <div className=" bg-red-500 px-6  text-lg  py-[10px] font-bold text-white">
-                Login
-              </div>
-            </Link>
-          </li>
-          <li>
-            <Link to="/signup">
-              <div className="border-2 border-red-500 px-4 py-2 font-bold">
-                Sign up
-              </div>
-            </Link>
-          </li>
-          </div> : <button className="bg-red-500 px-4 py-2 text-white" onClick={handleLogout}>Logout</button>
-}
+          {isAuth && (
+            <li>
+              <Link to="/chat">
+                <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
+                  Chat
+                </div>
+              </Link>
+            </li>
+          )}
+          {!isAuth ? (
+            <div className="flex gap-x-4 flex-row">
+              <li>
+                <Link to="/login">
+                  <div className=" bg-red-500 px-6  text-lg  py-[10px] font-bold text-white">
+                    Login
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/signup">
+                  <div className="border-2 border-red-500 px-4 py-2 font-bold">
+                    Sign up
+                  </div>
+                </Link>
+              </li>
+            </div>
+          ) : (
+            <button
+              className="bg-red-500 px-4 py-2 text-white"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
         </ul>
       </div>
       <div className="hidden max-lg:block">
@@ -106,29 +117,36 @@ const Navbar = () => {
                   Add Event
                 </Link>
               </li>
-              { isAuth &&
-          <li>
-            <Link to="/chat" onClick={() => setIsMenuOpen(false)}>
-              <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
-                Chat
-              </div>
-            </Link>
-          </li>
-        }
-              { !isAuth ? 
+              {isAuth && (
+                <li>
+                  <li className=" hover:translate-x-3 hover:translate-y-[-3px] duration-300">
+                    <Link to="/chat" onClick={() => setIsMenuOpen(false)}>
+                      Chat
+                    </Link>
+                  </li>
+                </li>
+              )}
+              {!isAuth ? (
                 <>
-              <li className=" bg-red-500 px-6  py-2 text-white">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                  Login
-                </Link>
-              </li>
-              <li className="border-2 border-red-500 px-4 py-2">
-                <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                  Signup
-                </Link>
-              </li>
-              </> : <button className="bg-red-500 px-4 py-2 text-white" onClick={handleLogout}>Logout</button>
-              }
+                  <li className=" bg-red-500 px-6  py-2 text-white">
+                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                      Login
+                    </Link>
+                  </li>
+                  <li className="border-2 border-red-500 px-4 py-2">
+                    <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <button
+                  className="bg-red-500 px-4 py-2 text-white"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              )}
             </ul>
           </div>
         </div>
