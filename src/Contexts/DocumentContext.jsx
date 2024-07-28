@@ -26,7 +26,8 @@ const DocumentContextProvider = ({ children }) => {
         ...item,
         description: item.description.split(/ {2,}/),
       }));
-      setEvents(eventsArray);
+      const filteredEvents = eventsArray.filter(item => new Date(item.eventDate) > new Date());
+      setEvents(filteredEvents);
     } catch (error) {
       console.error("Error fetching events:", error);
     }

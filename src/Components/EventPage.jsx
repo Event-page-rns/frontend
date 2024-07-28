@@ -41,14 +41,14 @@ const EventPage = () => {
   return (
     <section className=''>
       {/* header */}
-      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[20px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
+      <div className={`w-full min-h-[70px] bg-white z-40 flex justify-center items-center md:sticky p-2 top-0 max-sm:p-2 header ${isSticky ? 'text-xl min-h-[10px] p-2' : 'text-3xl max-sm:text-2xl font-bold bg-white z-50 '}`}>
         <h1>{currentEvent?.title}</h1>
       </div>
       {/* main */}
       <div className='h-full bg-black bg-opacity-5 pb-20 max-sm:pb-32' >
         <div className='md:p-16 p-3 flex max-lg:flex-col gap-10 justify-center it'>
         
-            <img src={currentEvent?.base32Url} className='max-sm:max-w-full w-[500px]' alt="Event" />
+            <img src={currentEvent?.base32Url} className='max-sm:max-w-full md:w-[50%] object-fill' alt="Event" />
 
           <div className='text-xl max-sm:text-md' >
             {currentEvent?.description.map((item, index) => (
@@ -64,7 +64,7 @@ const EventPage = () => {
           <h1 className='text-2xl'>{currentEvent?.title}</h1>
         </div>
         <div className='hidden max-sm:block'>
-          <p className='text-2xl font-bold font-sans'>{currentEvent?.entryFee == 0 ? 'FREE' : `${currentEvent?.entryFee} rs`}</p>
+          <p className='text-2xl font-bold font-sans'>{currentEvent?.entryFee == 0 ? 'FREE' : `${currentEvent?.entryFee} RS`}</p>
         </div>
         <div>
           <a href={currentEvent?.applyLink} target='_blank' className='px-6 py-3 bg-red-500 rounded-md text-white w-[180px] h-[70px] text-xl font-bold'>Apply</a>

@@ -108,7 +108,7 @@ const Navbar = () => {
               </li>
               { isAuth &&
           <li>
-            <Link to="/chat">
+            <Link to="/chat" onClick={() => setIsMenuOpen(false)}>
               <div className="cursor-pointer hover:border-b-2 hover:border-b-red-400 ">
                 Chat
               </div>

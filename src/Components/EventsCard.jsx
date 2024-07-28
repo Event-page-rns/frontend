@@ -7,7 +7,7 @@ const EventsCard = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex w-full max-sm:flex-col max-sm:items-center mb-4 gap-y-3  lg:min-w-[700px] md:max-w-[700px] max-md:max-w-[600px] max-sm:max-w-[500px] p-3 gap-x-3 border-2 border-black rounded-md ">
+    <div className="flex w-full max-sm:flex-col max-sm:items-center mb-4 gap-y-3  lg:min-w-[700px] md:max-w-[700px] max-md:max-w-[600px] max-sm:max-w-[500px] p-2 gap-x-3 border-2 border-black rounded-md ">
       <div className="min-w-[250px] max-w-[250px] max-sm:max-w-[350px] flex justify-center items-center">
         <img
           src={props.base32Url}
