@@ -35,6 +35,9 @@ const ManagerRegister = () => {
     try {
       const response = await axios.post(BASE_URL + "/manager-register");
       console.log(response);
+      setClubId("");
+      setClubName("");
+      setAdminPassword("");
     } catch (error) {
       console.error(error);
     }

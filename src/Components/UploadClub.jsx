@@ -34,6 +34,9 @@ const UploadClub = () => {
     try {
       const response = await axios.post(BASE_URL + "/upload-club");
       console.log(response);
+      setClubId("");
+      setClubName("");
+      setAdminPassword("");
     } catch (error) {
       console.error(error);
     }
