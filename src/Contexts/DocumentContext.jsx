@@ -7,17 +7,17 @@ export const BASE_URL = "http://localhost:8080/api/v1";
 
 const DocumentContextProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
-  const [isAuth,setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+  const [myPassword, setMyPassword] = useState("admin@123");
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const email = localStorage.getItem("email");
-    if(email){
+    if (email) {
       setIsAuth(true);
-    }else{
+    } else {
       setIsAuth(false);
     }
-  },[])
+  }, []);
 
   const getEvents = async () => {
     try {
@@ -26,7 +26,9 @@ const DocumentContextProvider = ({ children }) => {
         ...item,
         description: item.description.split(/ {2,}/),
       }));
-      const filteredEvents = eventsArray.filter(item => new Date(item.eventDate) > new Date());
+      const filteredEvents = eventsArray.filter(
+        (item) => new Date(item.eventDate) > new Date()
+      );
       setEvents(filteredEvents);
     } catch (error) {
       console.error("Error fetching events:", error);
@@ -38,7 +40,9 @@ const DocumentContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <DocumentContext.Provider value={{ getEvents, events,isAuth,setIsAuth }}>
+    <DocumentContext.Provider
+      value={{ getEvents, events, isAuth, setIsAuth, myPassword }}
+    >
       {children}
     </DocumentContext.Provider>
   );

@@ -13,6 +13,8 @@ import Signup from "./Components/Signup.jsx";
 import AddEventPage from "./Components/AddEventPage.jsx";
 import Chat from "./Components/Chat.jsx";
 import ProtectedRoutesChat from "./Components/ProtectedRoutes/ProtectedRoutesChat.jsx";
+import ManangerRegister from "./Components/ManagerRegister.jsx";
+import UploadClubs from "./Components/UploadClub.jsx";
 
 export default function App() {
   return (
@@ -35,12 +37,21 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/addevent" element={<AddEventPage />} />
-          <Route path="/chat" element={
-            <ProtectedRoutesChat>
-                        <Chat />
-            </ProtectedRoutesChat>
-            } />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoutesChat>
+                <Chat />
+              </ProtectedRoutesChat>
+            }
+          />
+          <Route
+            path="/manager-register"
+            element={<ManangerRegister />}
+          ></Route>
+          <Route path="/upload-clubs" element={<UploadClubs />}></Route>
         </Route>
+
         <Route path="*" element={<ErrorComponent />} />
       </Routes>
     </BrowserRouter>
