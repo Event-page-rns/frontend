@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const {setIsAuth} = useContext(DocumentContext);
+  const { setIsAuth } = useContext(DocumentContext);
 
   const login = async () => {
     try {
@@ -21,23 +21,24 @@ const Login = () => {
       });
       console.log(response);
       localStorage.setItem("email", email);
-      setIsAuth(true)
-      navigate("/")
-
+      localStorage.setItem("role", response.data.role);
+      console.log(response.data.role);
+      setIsAuth(true);
+      navigate("/");
     } catch (error) {
-      toast.error(error.response.data.message)
+      console.error(error);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!email){
+    if (!email) {
       toast.error("Please Enter Email id");
       return;
     }
 
-    if(!password){
+    if (!password) {
       toast.error("Please Enter Password");
       return;
     }

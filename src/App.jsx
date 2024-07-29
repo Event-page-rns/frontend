@@ -15,6 +15,7 @@ import Chat from "./Components/Chat.jsx";
 import ProtectedRoutesChat from "./Components/ProtectedRoutes/ProtectedRoutesChat.jsx";
 import ManangerRegister from "./Components/ManagerRegister.jsx";
 import UploadClubs from "./Components/UploadClub.jsx";
+import ProtectedRoutesAddEvent from "./Components/ProtectedRoutes/ProtectedRoutesAddEvent.jsx";
 
 export default function App() {
   return (
@@ -36,7 +37,14 @@ export default function App() {
           <Route path="/events/:eventId" element={<EventPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/addevent" element={<AddEventPage />} />
+          <Route
+            path="/addevent"
+            element={
+              <ProtectedRoutesAddEvent>
+                <AddEventPage />
+              </ProtectedRoutesAddEvent>
+            }
+          />
           <Route
             path="/chat"
             element={

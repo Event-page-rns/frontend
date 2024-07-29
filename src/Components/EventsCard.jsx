@@ -20,13 +20,11 @@ const EventsCard = (props) => {
         <h1 className="text-3xl max-sm:text-xl font-bold ">{props.title}</h1>
         <p className="text-lg">Hosted by: {props.clubName}</p>
         <p>
-          <mark>
-            Date : {props.eventDate} · Time :{props.eventTime}
-          </mark>
+          Date : {props.eventDate} · Time :{props.eventTime}
         </p>
         <p className="flex items-center gap-2">
           <img src={ticketImg} className="brightness-0" />
-          {props.entryFee == 0 ? 'FREE' : `${props.entryFee} RS`}
+          {props.entryFee == 0 ? "FREE" : `${props.entryFee} RS`}
         </p>
         <button
           className="px-4 py-2 bg-red-500 rounded-md text-white w-[150px] text-lg"

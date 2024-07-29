@@ -32,7 +32,10 @@ const UploadClub = () => {
     console.log(clubName + clubId + adminPassword);
 
     try {
-      const response = await axios.post(BASE_URL + "/upload-club");
+      const response = await axios.post(BASE_URL + "/addClub", {
+        clubId: clubId,
+        clubName: clubName,
+      });
       console.log(response);
       setClubId("");
       setClubName("");

@@ -33,10 +33,34 @@ const ManagerRegister = () => {
     console.log(email + clubId + adminPassword);
 
     try {
-      const response = await axios.post(BASE_URL + "/manager-register");
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+      };
+
+      const response = await axios.post(
+        BASE_URL + "/addAsClubManager",
+        {
+          login: {
+            email: "kishan@gmail.com",
+          },
+          club: {
+            clubId: "1234",
+          },
+        },
+        {
+          headers: headers,
+        }
+      );
       console.log(response);
+      if (response.data === "User already exists") {
+        toast.error(response.data);
+        return;
+      }
+      setEmail("");
       setClubId("");
-      setClubName("");
       setAdminPassword("");
     } catch (error) {
       console.error(error);
@@ -78,7 +102,7 @@ const ManagerRegister = () => {
                 Club Id
               </label>
               <input
-                type="password"
+                type="text"
                 id="club-id"
                 value={clubId}
                 onChange={(e) => setClubId(e.target.value)}
